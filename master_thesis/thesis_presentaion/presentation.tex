@@ -1,0 +1,37 @@
+\documentclass{beamer}
+\mode<presentation>
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage {amsmath,amssymb,amsthm,latexsym,tikz,pgfplots,framed,bbm,comment,graphicx,tabularx,subfig}
+\graphicspath{ {img/} }
+
+\usetheme {Frankfurt}
+\usecolortheme {default}
+
+%----- page numbering
+\beamertemplatenavigationsymbolsempty
+\setbeamerfont{page number in head/foot}{size=\large}
+\setbeamertemplate{footline}[frame number]
+
+%----- definitions
+\def \R{{\mathbb{R}}}
+\def \P{{\mathbb{P}}}
+\def \E{{\mathbb{E}}}
+
+%----- title page and document
+\title{Connectivity analysis of device-to-device cellular network using stochastic geometry}
+\author{Gulomov Saidkhuja\\14M54020}
+\institute{Department of Mathematical and Computing Sciences\\Tokyo Institute Of Technology}
+\begin{document}
+  \frame {\titlepage}
+  \include {abstract}
+  \begin {frame}
+    \frametitle {Table of contents}
+    \tableofcontents
+  \end {frame}
+  \include {introduction}
+  \include {problem_results}
+  \include {numericals}
+  \include {conclusion}
+\end{document}

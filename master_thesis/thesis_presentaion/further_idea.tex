@@ -1,0 +1,43 @@
+\section {Ideas on multi-hop connection}
+
+\begin {frame}
+  \frametitle {General concept}
+  \begin {tikzpicture}
+    \begin {axis}[
+      x=0.5cm, y=0.5cm,
+      xmin=-2, xmax=15,
+      ymin=-5, ymax=5,
+      axis x line=middle,
+      axis y line=middle,
+      xlabel=$x$, ylabel=$y$,
+      mark=*
+    ]
+    \draw[blue] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {0}{0}}{0.5cm}};
+    \draw[red] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {8}{0}}{1.5cm}};
+    \draw[green] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {1}{1}}{0.5cm}};
+    \draw[brown] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {2.5}{1.5}}{0.5cm}};
+    \draw[blue] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {5}{2}}{0.5cm}};
+    \addplot [black, only marks] coordinates {(3.7,1.7) (3.8,1.8) (3.9,1.9)};
+    \end {axis}
+  \end {tikzpicture}
+\end {frame}
+
+\begin {frame}
+  \frametitle {Special case of 2-hop connection}
+  \begin {tikzpicture}
+    \begin {axis}[
+      x=0.5cm, y=0.5cm,
+      xmin=-2, xmax=15,
+      ymin=-5, ymax=5,
+      axis x line=middle,
+      axis y line=middle,
+      xlabel=$x$, ylabel=$y$,
+      mark=*
+    ]
+    \draw[blue] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {0}{0}}{0.5cm}};
+    \draw[brown] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {1}{1}}{0.5cm}};
+    \draw[red] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {6}{0}}{1.5cm}};
+    \draw[blue] \pgfextra {\pgfpathcircle {\pgfplotspointaxisxy {3}{2}}{0.5cm}};
+    \end {axis}
+  \end {tikzpicture}
+\end {frame}

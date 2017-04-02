@@ -1,0 +1,30 @@
+\begin{comment}
+https://en.wikipedia.org/wiki/Conditional_probability_distribution
+https://en.wikipedia.org/wiki/Law_of_total_probability
+\end{comment}
+
+\subsection{Case 2: Connectivity by means of a single device-to-device relay link}
+{\it See Appendix B, picture 2 for the illustration}
+
+\begin {framed}
+{\bf Theorem 2.}
+The probability of getting a successful single D2D relay link would be expressed as:
+\[p_{nf}^{s-hop}=\int_{(R_1;R_1+R_2]}2\lambda_b\pi re^{-\lambda_b\pi r^2}\Big(1-e^{-\lambda_u|D(r)|}\Big)dr\]
+where
+\[|D(r)|=R_2^2\cos^{-1}\Big(\frac{r^2+R_2^2-R_1^2}{2rR_2}\Big)+R_1^2\cos^{-1}\Big(\frac{r^2+R_1^2-R_2^2}{2rR_1}\Big)\]
+\[-\frac{1}{2}\sqrt{(-r+R_2+R_1)(r+R_2-R_1)(r-R_2+R_1)(r+R_1+R_2)}\]
+{\it Proof:}  See Appendix A.
+\end {framed}
+
+\begin {framed}
+Optimal value of PDF of the distance between the receiver and its serving base station.
+\\ As it's stated in the {\it Appendix A, proof of Theorem 2}, the PDF of r.v. \(d_b\) has the following expression:
+\[f_{d_b}(r)=2\lambda_b\pi r\exp{\Big(-\lambda_b\pi r^2\Big)}\]
+We calculate its derivative:
+\[f_{d_b}'(r)=2\lambda_b\pi\exp{\Big(-\lambda_b\pi r^2\Big)}\Big(1-2\lambda_b\pi r^2\Big)\]
+Let's find its critical point:
+\[f_{d_b}'(r)=0\]
+\[r=\sqrt{\frac {1}{2\lambda_b\pi}}\]
+Then,
+\[f_{d_b}\Big(\sqrt{\frac {1}{2\lambda_b\pi}}\Big)=\sqrt{\frac{2\pi\lambda_b}{e}}\text{ , or }\approx1.52\sqrt{\lambda_b}\]
+\end {framed}

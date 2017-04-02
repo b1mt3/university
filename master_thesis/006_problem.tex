@@ -1,0 +1,37 @@
+\section{Problem Statement and Performance characteristics}
+\subsection{System model}
+The study considers 2 independent homogeneous stationary Poisson point processes with given densities:
+\begin {enumerate}
+  \item $(\Phi_b, \lambda_b)$ - set of base stations;
+  \item $(\Phi_u, \lambda_u)$ - set of mobile users.
+\end {enumerate}
+Respective initial parameters (a transmission power $P$, a signal propagation exponent $\beta$, a thermal noise value $N$ and a service threshold $\Theta$) are also given:
+\begin {enumerate}
+  \item $(P_b, \beta_b, N_b, \Theta_b)$ - parameters of the base stations;
+  \item $(P_u, \beta_u, N_u, \Theta_u)$ - parameters of the mobile users.
+\end {enumerate}
+The random channel effects include only a Rayleigh fading with a mean 1. 
+The environment is noise-limited. 
+The receiver is located at the origin $o$ of $\R^2$. 
+The location of the nearest base station is denoted as $B_{nst}$. 
+The distance between the receiver and its nearest serving base station is denoted as $d_b$. 
+The distance between 2 mobile users located near each other is denoted as $d_u$. 
+The objective is to calculate the performance of the link between the receiver and it nearest serving base station.
+
+\subsection{Performance evaluation}
+The main performance characteristics in this model is Signal-to-Noise ratio (SNR):
+\[SNR=\frac {S}{N}\text{,}\]
+representing the signal with the necessary message (\(S\)) and the thermal noise of the transmitter (\(N\)). 
+For scenarios without fading the SNR would look like:
+\[SNR_{nf}=\frac {S}{N}=\frac {P\times d^{-\beta}}{N}\text{,}\]
+where \(P\) is a transmission power of a node, \(d^{-\beta}\) -- a path-loss function, comprised of the distance between the nodes \(d\) and the signal propagation exponent \(\beta\).
+\\ For scenarios involving the fading effect, a random variable \(h\) is incorporated that follows an exponential distribution with mean \(1/\mu\) \Big(\(h\sim \exp(\mu)\)\Big):
+\[SNR_f=\frac {P\times h\times d^{-\beta}}{N}\]
+The purpose of the thesis is to consider the following probabilities:
+\begin {equation}
+  p_{nf}=\P\Big[SNR_{nf}\ge\Theta\Big]
+\end {equation}
+
+\begin {equation}
+  p_f=\P\Big[SNR_f\ge\Theta\Big]
+\end {equation}

@@ -1,0 +1,17 @@
+    \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            extra x ticks={-1,1},
+            extra y ticks={-2,2},
+            extra tick style={grid=major},
+        ]
+        \draw[red] \pgfextra{
+          \pgfpathcircle{\pgfplotspointaxisxy{0}{0}}{2.5cm}
+          };
+        \node[inner sep=0pt] (receiver) at (3.4cm,2.9cm)
+            {\includegraphics[width=.02\textwidth]{phone.jpg}};
+        \node[inner sep=0pt] (receiver) at (4.4cm,0.9cm)
+            {\includegraphics[width=.04\textwidth]{bs.png}};
+        \end{axis}
+    \end{tikzpicture}

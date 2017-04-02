@@ -1,0 +1,33 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath,amssymb,amsthm,latexsym}
+\usepackage[utf8]{inputenc}  % DOS-кодировка (обязательно!)
+\usepackage[english,russian]{babel} % Система переносов (обязательно!)
+\usepackage{graphicx}
+\graphicspath{ {schemes/} }
+\tolerance 9000
+\renewcommand{\proofname}{Доказательство.}
+
+\numberwithin{equation}{section}
+%-------------- Следующие определения должны быть согласованы с
+%-------------- содержимым файла ENV2.DAT
+\newtheorem{Theorem}{Теорема}
+\newtheorem{Proposition}[Theorem]{Предложение}
+\newtheorem{Corollary}[Theorem]{Следствие}
+\newtheorem{Lemma}[Theorem]{Лемма}
+\newtheorem{Example}[Theorem]{Пример}
+\newtheorem{Conjecture}[Theorem]{Гипотеза}
+% -------------------------------------------------
+\input amssym.def
+\def \R{{\mathbb{R}}}
+
+\begin{document}
+\input{diploma-title}
+\tableofcontents
+\input{diploma-abstract}
+\input{diploma-preface}
+\input{diploma-defins}
+\input{diploma-result}
+\input{diploma-formula}
+\input{diploma-outline}
+\input{diploma-bib}
+\end{document}

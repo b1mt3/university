@@ -1,0 +1,26 @@
+\section {Study approach}
+
+\begin {frame}
+  \frametitle {Non-fading channel (Single D2D relay connection).}
+  \par Denote the area $\Big[b(O,R_2)\cap b(B_{nst},R_1)\Big]$ as $D$. If $\Big[(R_1<d\le R_1+R_2)\cap(\Phi_u(D(d))\ge 1)\Big]$, then the connection is by means of a single D2D relay. As $d$ is a random variable, we first consider its PDF:
+  \begin {block} {}
+    \[f_d(r)=\frac {d} {dr}\Big(\P[d\le r]\Big)=\frac {d} {dr}\Bigg(1-\P\Big[\Phi_b(b(O,r))=0\Big]\Bigg)\]
+    \[=2\lambda_b\pi r\exp(-\lambda_b\pi r^2)\]
+  \end {block}
+\end {frame}
+
+\begin {frame}
+  \begin {block} {}
+    \[p_{nf}^{s-hop}=\P\Big[(R_1<d\le R_1+R_2)\cap(\Phi_u(D(d))\ge 1)\Big]\]
+    \[=\int_{R_1}^{R_1+R_2}f_(r)\P\Big[\Phi_u(D(d))\ge 1 \Big| d=r\Big]dr\]
+    \[=\int_{R_1}^{R_1+R_2}f_d(r)(1-\P\Big[\Phi_u(D(r))=0\Big])dr\]
+    \[=2\lambda_b\pi\int_{R_1}^{R_1+R_2}r\exp(-\lambda_b\pi r^2)\Big(1-\exp(-\lambda_u|D(r)|)\Big)dr\]
+  \end {block}
+\end {frame}
+
+\begin {frame}
+  \frametitle {Channel with fading (Cellular connection)}
+  \par First, we condition on the nearest serving base station being at a distance $r$ from the receiver. Then, we derive:
+  \[p_{f}^{cel}=\P\Big[SNR_f\ge\Theta_b\Big|d=r\Big]=\int_{r>0}f_d(r)\P\Bigg[h\ge\frac {\Theta_b N_b r^{\beta_b}} {P_b}\Bigg]dr\]
+  \[=2\lambda_b\pi\int_{r>0}\exp(-\frac {\mu\Theta_b N_b r^{\beta_b}} {P_b})r\exp(-\lambda_b\pi r^2)dr\]
+\end {frame}

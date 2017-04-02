@@ -1,0 +1,25 @@
+\section {Considered cases under "non-fading channel" assumption}
+Let's investigate (5) a bit deeper in terms of the link between the receiver and its nearest serving base station:
+\[p_{nf}^{cel}=\P[SNR_{nf}^{cel}\ge\Theta_b]=\P\Bigg[\frac {P_b d_b^{-\beta_b}}{N_b}\ge\Theta_b\Bigg]=\P\Bigg[d_b\le\Big(\frac {P_b}{N_b \Theta_b}\Big)^{1/\beta_b}\Bigg]\]
+\begin{equation}
+=\P\Bigg[d_b\le R_1\Bigg]
+\end{equation}
+In terms of a link between 2 nodes:
+\[p_{nf}^{d2d}=\P[SNR_{nf}^{d2d}\ge\Theta_u]=P\Bigg[d_u\le\Big(\frac {P_u}{N_u \Theta_u}\Big)^{1/\beta_u}\Bigg]\]
+\begin{equation}
+=\P\Bigg[d_u\le R_2\Bigg]
+\end{equation}
+So, the consideration for the scenarios without fading will be based on the distance between the receiver and its nearest serving base station:
+\begin {enumerate}
+  \item cellular link \(\Big(d_b\le R_1\Big)\);
+  \item cellular link or a single D2D relay link \(\Big(R_1+R_2\ge d_b>R_1\Big)\)
+\end {enumerate}
+
+\subsection{Case 1: Direct cellular link}
+{\it See Appendix B, picture 1 for the illustration.}        
+\begin {framed}
+{\bf Theorem 1.}	
+The probability of getting a successful cellular link would be expressed as:
+	\[p_{nf}^{cel}=1-e^{-\lambda_b\pi R_1^2}\]
+{\it Proof:}  See Appendix A.
+\end {framed}

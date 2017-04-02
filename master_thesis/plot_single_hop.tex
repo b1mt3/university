@@ -1,0 +1,22 @@
+    \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3,xmax=10,
+            ymin=-3,ymax=10,
+            extra x ticks={0,-4,4},
+            extra y ticks={0,-4,4},
+            extra tick style={axis equal=true,grid=major},
+        ]
+		\draw[red,dashed] \pgfextra{
+		  \pgfpathcircle{\pgfplotspointaxisxy{0}{0}}{2.5cm}
+		};
+		\draw[red,dashed] \pgfextra{
+		  \pgfpathcircle{\pgfplotspointaxisxy{4}{4}}{2.5cm}
+		};
+		\draw[blue] \pgfextra{
+		  \pgfpathcircle{\pgfplotspointaxisxy{0}{0}}{1cm}
+		};
+		\addplot graphics[xmin=-0.2,xmax=0.2,ymin=-0.4,ymax=0.4]{phone.jpg};
+		\addplot graphics[xmin=0.8,xmax=1.2,ymin=0.6,ymax=1.4]{phone.jpg};
+		\addplot graphics[xmin=3.6,xmax=4.4,ymin=3.6,ymax=4.6]{bs.png};
+        \end{axis}
+    \end{tikzpicture}

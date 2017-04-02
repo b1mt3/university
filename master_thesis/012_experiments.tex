@@ -1,0 +1,399 @@
+\section{Numerical Experiments}
+Simulations were conducted for cases:
+\begin{enumerate}
+    \item direct cellular connection (without fading);
+    \item direct cellular connection (with fading);
+	\item direct cellular connection or single D2D relay link (without fading);
+\end{enumerate}
+The following data was used as a baseline sample for experiments:
+\begin{center}
+    \begin{tabular}{ | l | p{3cm} | }
+	  \hline
+	  Symbol & Simulation value \\
+	  \hline
+	  ${P_u}$ & 23 dBm\\
+	  ${P_b}$ & 46 dBm+14 dBi\\
+	  ${\lambda_u}$ & ${5\times 10^{-5}}$\\
+	  ${\lambda_b}$ & $10^{-6}$\\
+	  ${N_u}$ & -105 dBm\\
+	  ${N_b}$ & -99 dBm\\
+	  ${\Theta_u}$ & 10 dB\\
+	  ${\Theta _b}$ & 5 dB\\
+	  ${\beta_u}$ & 3.68\\
+	  ${\beta_b}$ & 3.52\\
+	  \hline
+	\end{tabular}
+\end{center}
+The value of the precision used during the numerical integration is $10^{-3}$.
+\\ The following graph displays the performance in the considered cases.
+
+\vspace{1.5em}
+\subsection {Direct cellular connection without fading}
+\begin{tabular}{c|c|c|c|c|c|c|c|}
+\textnumero & \(\lambda_b(\text{km}^{-2})\) & \(P_b\)(W) & \(\beta_b\) & \(N_b\)(W) & \(\Theta_b\)(dB) & \(R_1\)(km) & \(\P\) \\ \hline
+1 & 1.131 & 1000 & 3.52 & 1\(\times10^{-7}\) & 3.16 & 499 & 1.000 \\ \hline
+2 & 2\(\times10^{-6}\) & 1000 & 3.52 & 1\(\times10^{-7}\) & 3.16 & 499 & 0.792 \\ \hline
+3 & 1\(\times10^{-7}\) & 1000 & 3.52 & 1\(\times10^{-7}\) & 3.16 & 499 & 0.076 \\ \hline
+4 & 1.131 & 1000 & 2.7 & 1\(\times10^{-7}\) & 3.16 & 3300 & 1.000 \\ \hline
+5 & 3\(\times10^{-8}\) & 1000 & 2.7 & 1\(\times10^{-7}\) & 3.16 & 3300 & 0.642 \\ \hline
+6 & 8\(\times10^{-9}\) & 1000 & 2.7 & 1\(\times10^{-7}\) & 3.16 & 3300 & 0.240 \\ \hline
+7 & 0.001 & 1000 & 6 & 1\(\times10^{-7}\) & 3.16 & 38 & 0.990 \\ \hline
+8 & 2\(\times10^{-4}\) & 1000 & 6 & 1\(\times10^{-7}\) & 3.16 & 38 & 0.602 \\ \hline
+9 & 8\(\times10^{-5}\) & 1000 & 6 & 1\(\times10^{-7}\) & 3.16 & 38 & 0.309 \\ \hline
+\end{tabular}
+\vspace{.5cm}
+\\{\bf Analysis:} Here we tested three sets of different densities on three values of the environment with \(\beta=3.52\) denoting a shadowed urban cellular radio, \(\beta=2.7\) denoting an ordinary urban area cellular radio and \(\beta=6\) denoting obstructed in building.
+Naturally, decreasing density results in a less service probability; also, as the environment gets less space, a less distance between the receiver and its nearest serving base station is necessary to connect to successfully.\\
+\FloatBarrier
+\begin{figure}[!hb]
+  \begin{minipage}{0.5\textwidth}
+    \begin{tikzpicture}[scale=.7]
+      \begin{axis}[xmin=0.00000001,xmax=0.000007,ymin=0,ymax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={probability}]
+        \addplot table[header=false] {tables_new/cel_nf_ds_prob0.txt};
+        \label {pgfplots:cel_ds_prob0}
+        \addlegendentry {\(\beta_b=3.52\)}
+        \addplot table[header=false] {tables_new/cel_nf_ds_prob1.txt};
+        \label {pgfplots:cel_ds_prob1}
+        \addlegendentry {\(\beta_b=2.7\)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \begin{tikzpicture}[scale=.7]
+      \begin{axis}[xmin=0.00000001,xmax=0.0008,ymin=0,ymax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={probability}]
+        \addplot table[header=false] {tables_new/cel_nf_ds_prob2.txt};
+        \label {pgfplots:cel_ds_prob2}
+        \addlegendentry {\(\beta_b=6\)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+  \caption {(a) and (b)}
+\end{figure}
+{\bf Analysis:} Figure (a) demonstrates a difference between urban (\(\beta=3.52\)) and open (\(\beta=2.7\)) environment. Naturally, the connection is much more rapid in the open environment even if the density of base station is very low. The (b) figure indicates the demand of a more dense base stations network to operate normal in the environment obstructed with builidings.
+\FloatBarrier
+\begin{figure}[!hb]
+  \begin{minipage}{.5\textwidth}
+    \begin{tikzpicture}[scale=.7]
+      \begin{axis}[xmin=1.6,xmax=6,ymin=0,ymax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\beta_b\), propagation exponent},ylabel={probability}]
+        \addplot table[header=false] {tables_new/cel_nf_pex_prob0.txt};
+        \label {pgfplots:cel_pex_prob0}
+        \addlegendentry {\(\lambda_b=10^{-4}\)}
+        \addplot table[header=false] {tables_new/cel_nf_pex_prob1.txt};
+        \label {pgfplots:cel_pex_prob1}
+        \addlegendentry {\(\lambda_b=10^{-3}\)}
+        \addplot table[header=false] {tables_new/cel_nf_pex_prob2.txt};
+        \label {pgfplots:cel_pex_prob2}
+        \addlegendentry {\(\lambda_b=10^{-5}\)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \begin{tikzpicture}[scale=.7]
+      \begin{axis}[xmin=1.6,xmax=6,ymin=0,ymax=50,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\beta_b\), propagation exponent},ylabel={\(R_1\), distance to BS, km}]
+        \addplot table[header=false] {tables_new/cel_nf_pex_rad0.txt};
+        \label {pgfplots:cel_pex_rad0}
+        \addlegendentry {\(\lambda_b=10^{-4}\)}
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}
+  \caption {(a) and (b)}
+\end{figure}
+\FloatBarrier
+{\bf Analysis:} A similar approach as the previous experiment, but here we display how a gradual obstruction level affects the connectivity for 3 different densities of base stations. The more dense the base stations are, the better the connectivity remains.
+\subsection {Direct cellular connection with fading}
+\FloatBarrier
+\begin{figure}[!hb]
+  \begin{minipage}{.5\textwidth}
+    \begin{tikzpicture}[scale=.7]
+      \begin{axis}[xmin=0.01,xmax=5,ymin=0,ymax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={probability}]
+        \addplot table[header=false] {tables_new/cel_f_ds_prob0.txt};
+        \label {pgfplots:cel_f_ds_prob0}
+        \addlegendentry {\(\beta_b=3.52\), within 1 km}
+        \addplot table[header=false] {tables_new/cel_f_ds_prob1.txt};
+        \label {pgfplots:cel_f_ds_prob1}
+        \addlegendentry {\(\beta_b=3.52\), within 5 km}
+        \addplot table[header=false] {tables_new/cel_f_ds_prob2.txt};
+        \label {pgfplots:cel_f_ds_prob2}
+        \addlegendentry {\(\beta_b=3.52\), within 500 m}
+      \end{axis}
+    \end{tikzpicture}
+  \caption {}
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \begin{tikzpicture}[scale=.7]
+      \begin{axis}[xmin=1,xmax=6,ymin=0,ymax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\beta_b\), propagation exponent},ylabel={probability}]
+        \addplot table[header=false] {tables_new/cel_f_pex_prob0.txt};
+        \label {pgfplots:cel_f_pex_prob0}
+        \addlegendentry {\(\lambda_b=0.011\), \(\mu=1\), within 1 km}
+        \addplot table[header=false] {tables_new/cel_f_pex_prob1.txt};
+        \label {pgfplots:cel_f_pex_prob1}
+        \addlegendentry {\(\lambda_b=0.011\), \(\mu=1\), within 5 km}
+        \addplot table[header=false] {tables_new/cel_f_pex_prob2.txt};
+        \label {pgfplots:cel_f_pex_prob2}
+        \addlegendentry {\(\lambda_b=0.001\), \(\mu=1\), within 10 km}
+        \addplot table[header=false] {tables_new/cel_f_pex_prob3.txt};
+        \label {pgfplots:cel_f_pex_prob3}
+        \addlegendentry {\(\lambda_b=0.001\), \(\mu=1\), within 20 km}
+        \addplot table[header=false] {tables_new/cel_f_pex_prob5.txt};
+        \label {pgfplots:cel_f_pex_prob5}
+        \addlegendentry {\(\lambda_b=0.1\), \(\mu=1\), within 1 km}
+        \addplot table[header=false] {tables_new/cel_f_pex_prob4.txt};
+        \label {pgfplots:cel_f_pex_prob4}
+        \addlegendentry {\(\lambda_b=0.1\), \(\mu=1\), within 5 km}
+      \end{axis}
+    \end{tikzpicture}
+  \caption {}
+  \end{minipage}
+\end{figure}
+\FloatBarrier
+{\bf Analysis:} Figure 3 demonstrates the experiment of connectivity in bad urban macrocell environment (\(\beta=3.52\)) with channel suffering fading effects.
+
+\subsection {Direct cellular connection or single D2D relay link without fading}
+\FloatBarrier
+\begin{figure}[!hb]
+    \begin{tikzpicture}
+      \begin{axis}[xmin=0.00000001,xmax=0.00003,ymin=0.000001,ymax=0.1,zmin=0,zmax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={\(\lambda_u\), UE density},zlabel={probability}]
+        \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob0.txt};
+        \label {pgfplots:d2d_nf_c_ds_prob0}
+        \addlegendentry {\(\beta_b=3.52\)}
+        \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob0.txt};
+        \label {pgfplots:d2d_nf_ds_prob0}
+        \addlegendentry {\(\beta_b=3.52\)/\(\beta_u=3.68\)}
+        \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob1.txt};
+        \label {pgfplots:d2d_nf_c_ds_prob1}
+        \addlegendentry {\(\beta_b=2.7\)}
+        \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob2.txt};
+        \label {pgfplots:d2d_nf_ds_prob2}
+        \addlegendentry {\(\beta_b=2.7\)/\(\beta_u=2.86\)}
+      \end{axis}
+    \end{tikzpicture}
+  \caption {}
+\end{figure}
+\FloatBarrier
+\begin{minipage}{.45\textwidth}
+	{\bf \(\beta_b=3.52\):}
+	\begin{tabular}{|c|c|}
+	\(\lambda_b\) & \(\P\) \\ \hline
+	0.00000001 & 0.008 \\ \hline
+	0.00000005 & 0.039 \\ \hline
+	0.00000025 & 0.178 \\ \hline
+	0.00000125 & 0.625 \\ \hline
+	0.00000625 & 0.993 \\ \hline
+	\end{tabular}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	{\bf \(\beta_b=3.52\)/\(\beta_u=3.68\):}
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.008 \\ \hline
+	0.00000005 & 0.000010 & 0.039 \\ \hline
+	0.00000025 & 0.000100 & 0.178 \\ \hline
+	0.00000125 & 0.001000 & 0.626 \\ \hline
+	0.00000625 & 0.010000 & 0.993 \\ \hline
+	0.00003125 & 0.100000 & 1.000 \\ \hline
+	\end{tabular}
+\end{minipage}
+
+\vspace{1cm}
+\begin{minipage}{.45\textwidth}
+	{\bf \(\beta_b=2.7\):}
+	\begin{tabular}{|c|c|}
+	\(\lambda_b\) & \(\P\) \\ \hline
+	0.00000001 & 0.290 \\ \hline
+	0.00000002 & 0.496 \\ \hline
+	0.00000004 & 0.746 \\ \hline
+	0.00000008 & 0.935 \\ \hline
+	0.00000016 & 0.996 \\ \hline
+	\end{tabular}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	{\bf \(\beta_b=2.7\)/\(\beta_u=2.86\):}
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.290 \\ \hline
+	0.00000005 & 0.000010 & 0.819 \\ \hline
+	0.00000025 & 0.000100 & 1.000 \\ \hline
+	\end{tabular}
+\end{minipage}
+
+\vspace{1.5em}{\bf Analysis:} Testing the single D2D relay link in urban and open environments and comparing the performance with the respective one for direct cellular connectivity indicates an almost identical result, meaning in these types of environment both types network are equally good. 
+\begin{figure}[!hb]
+    \begin{tikzpicture}
+      \begin{axis}[mesh/ordering=y varies,xmin=0.00000001,xmax=0.0008,ymin=0.01,ymax=100,zmin=0,zmax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={\(\lambda_u\), UE density},zlabel={probability}]
+        \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob2.txt};
+        \label {pgfplots:d2d_nf_c_ds_prob2}
+        \addlegendentry {\(\beta_b=6\)/\(\beta_u=6\)}
+        \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob3.txt};
+        \label {pgfplots:d2d_nf_ds_prob3}
+        \addlegendentry {\(\beta_b=6\)/\(\beta_u=6\)}
+      \end{axis}
+    \end{tikzpicture}
+  \caption {}
+\end{figure}
+\FloatBarrier
+\begin{minipage}{.45\textwidth}
+	{\bf \(\beta_b=6\):}
+	\begin{tabular}{|c|c|}
+	\(\lambda_b\) & \(\P\) \\ \hline
+	0.00000025 & 0.001 \\ \hline
+	0.00000125 & 0.006 \\ \hline
+	0.00000625 & 0.028 \\ \hline
+	0.00003125 & 0.134 \\ \hline
+	0.00015625 & 0.514 \\ \hline
+	0.00078125 & 0.973 \\ \hline
+	\end{tabular}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	{\bf \(\beta_b=6\)/\(\beta_u=6\):}
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.000 \\ \hline
+	0.00000005 & 0.000010 & 0.000 \\ \hline
+	0.00000025 & 0.000100 & 0.001 \\ \hline
+	0.00000125 & 0.001000 & 0.006 \\ \hline
+	0.00000625 & 0.010000 & 0.029 \\ \hline
+	0.00003125 & 0.100000 & 0.139 \\ \hline
+	0.00015625 & 1.000000 & 0.595 \\ \hline
+	0.00078125 & 10.000000 & 0.997 \\ \hline
+	0.00390625 & 100.000000 & 1.000 \\ \hline
+	\end{tabular}
+\end{minipage}
+
+\vspace{1.5em}{\bf Analysis:} Testing an environment with serious signal obstructions indicates a better performance in case of D2D relay link: starting from BS density of \(10^{-6}\) and mobile user density of \(10^{-2}\) and forth the performance gets more reliable.
+\begin{figure}[!hb]
+    \begin{tikzpicture}
+      \begin{axis}[xmin=0.00000001,xmax=0.000003,ymin=0.000001,ymax=100,zmin=0,zmax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={\(\lambda_u\), UE density},zlabel={probability}]
+        \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob3.txt};
+        \label {pgfplots:d2d_nf_c_ds_prob3}
+        \addlegendentry {\(\beta_b=3.52\)}
+        \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob1.txt};
+        \label {pgfplots:d2d_nf_ds_prob0}
+        \addlegendentry {\(\beta_b=3.52\)/\(\beta_u=3.68\)}
+        \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob4.txt};
+        \label {pgfplots:d2d_nf_c_ds_prob4}
+        \addlegendentry {\(\beta_b=2.7\)}
+        \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob4.txt};
+        \label {pgfplots:d2d_nf_ds_prob4}
+        \addlegendentry {\(\beta_b=2.7\)/\(\beta_u=2.86\)}
+      \end{axis}
+    \end{tikzpicture}
+  \caption {}
+\end{figure}
+\FloatBarrier
+\begin{minipage}{.45\textwidth}
+	{\bf \(\beta_b=3.52\):}
+	\begin{tabular}{|c|c|}
+	\(\lambda_b\) & \(\P\) \\ \hline
+	0.00000001 & 0.008 \\ \hline
+	0.00000002 & 0.016 \\ \hline
+	0.00000004 & 0.031 \\ \hline
+	0.00000008 & 0.061 \\ \hline
+	0.00000016 & 0.118 \\ \hline
+	0.00000032 & 0.222 \\ \hline
+	0.00000064 & 0.395 \\ \hline
+	0.00000128 & 0.634 \\ \hline
+	0.00000256 & 0.866 \\ \hline
+	0.00000512 & 0.982 \\ \hline
+	\end{tabular}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+	{\bf \(\beta_b=3.52\)/\(\beta_u=3.68\):}
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.008 \\ \hline
+	0.00000002 & 0.000010 & 0.016 \\ \hline
+	0.00000004 & 0.000100 & 0.031 \\ \hline
+	0.00000008 & 0.001000 & 0.061 \\ \hline
+	0.00000016 & 0.010000 & 0.119 \\ \hline
+	0.00000032 & 0.100000 & 0.239 \\ \hline
+	0.00000064 & 1.000000 & 0.457 \\ \hline
+	0.00000128 & 10.000000 & 0.705 \\ \hline
+	0.00000256 & 100.000000 & 0.913 \\ \hline
+	\end{tabular}
+\end{minipage}
+
+\vspace{1cm}
+\begin{minipage}{.45\textwidth}
+{\bf \(\beta_b=2.7\):}
+	\begin{tabular}{|c|c|}
+	\(\lambda_b\) & \(\P\) \\ \hline
+	0.00000001 & 0.290 \\ \hline
+	0.00000002 & 0.496 \\ \hline
+	0.00000004 & 0.746 \\ \hline
+	0.00000008 & 0.935 \\ \hline
+	0.00000016 & 0.996 \\ \hline
+	\end{tabular}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+{\bf \(\beta_b=2.7\)/\(\beta_u=2.86\):}
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.290 \\ \hline
+	0.00000002 & 0.000010 & 0.496 \\ \hline
+	0.00000004 & 0.000100 & 0.746 \\ \hline
+	0.00000008 & 0.001000 & 0.936 \\ \hline
+	0.00000016 & 0.010000 & 0.996 \\ \hline
+	0.00000032 & 0.100000 & 1.000 \\ \hline
+	\end{tabular}
+\end{minipage}
+\FloatBarrier
+\vspace{1.5em}{\bf Analysis:} This experiment takes a different scenario. While the performance remains identical for both the direct cellular and D2D relay connections, here an increased density of mobile users is considered. While the previous experiment handled the ratio of the number of base stations to the number of mobile users at 1/1000, this experiment drastically decreases the ratio down to 1/1000000. The result indicates a better connectivity for D2D relay link.
+\begin{figure}[!hb]
+    \begin{tikzpicture}
+      \begin{axis}[mesh/ordering=y varies,xmin=0.00000001,xmax=0.0008,ymin=0.01,ymax=100,zmin=0,zmax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={\(\lambda_u\), UE density},zlabel={probability}]
+        \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob5.txt};
+        \label {pgfplots:d2d_nf_c_ds_prob5}
+        \addlegendentry {\(\beta_b=6\)}
+        \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob5.txt};
+        \label {pgfplots:d2d_nf_ds_prob4}
+        \addlegendentry {\(\beta_b=6\)/\(\beta_u=6\)}
+      \end{axis}
+    \end{tikzpicture}
+  \caption {}
+\end{figure}
+\FloatBarrier
+\begin{minipage}{.4\textwidth}
+{\bf \(\beta_b=6\):}
+\begin{tabular}{|c|c|}
+\(\lambda_b\) & \(\P\) \\ \hline
+0.00000032 & 0.001 \\ \hline
+0.00000064 & 0.003 \\ \hline
+0.00000128 & 0.006 \\ \hline
+0.00000256 & 0.012 \\ \hline
+0.00000512 & 0.023 \\ \hline
+0.00001024 & 0.046 \\ \hline
+0.00002048 & 0.090 \\ \hline
+0.00004096 & 0.172 \\ \hline
+0.00008192 & 0.315 \\ \hline
+0.00016384 & 0.530 \\ \hline
+0.00032768 & 0.779 \\ \hline
+0.00065536 & 0.951 \\ \hline
+0.00131072 & 0.998 \\ \hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}{.2\textwidth}
+{\bf \(\beta_b=6\)/\(\beta_u=6\):}
+\begin{tabular}{|c|c|c|}
+\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+0.00000001 & 0.000001 & 0.000 \\ \hline
+0.00000002 & 0.000002 & 0.000 \\ \hline
+0.00000004 & 0.000004 & 0.000 \\ \hline
+0.00000008 & 0.000008 & 0.000 \\ \hline
+0.00000016 & 0.000016 & 0.001 \\ \hline
+0.00000032 & 0.000032 & 0.001 \\ \hline
+0.00000064 & 0.000064 & 0.003 \\ \hline
+0.00000128 & 0.000128 & 0.006 \\ \hline
+0.00000256 & 0.000256 & 0.012 \\ \hline
+0.00000512 & 0.000512 & 0.023 \\ \hline
+0.00001024 & 0.001024 & 0.046 \\ \hline
+0.00002048 & 0.002048 & 0.090 \\ \hline
+0.00004096 & 0.004096 & 0.172 \\ \hline
+0.00008192 & 0.008192 & 0.315 \\ \hline
+0.00016384 & 0.016384 & 0.532 \\ \hline
+0.00032768 & 0.032768 & 0.782 \\ \hline
+0.00065536 & 0.065536 & 0.953 \\ \hline
+0.00131072 & 0.131072 & 1.000 \\ \hline
+\end{tabular}
+\end{minipage}
+\FloatBarrier
+\vspace{1.5em}{\bf Analysis:} In this experiment for the seriously obstructed environment, the strategy was to keep the ratio of the number of base stations to the number of mobile users at the value 1/100. The previous experiment handled the same ratio at the value of 1/10000. Naturally, the result of this experiment indicates the demand of a more dense base station network in order to provide a reliable connectivity.

@@ -1,0 +1,31 @@
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{.2\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+      \draw (-1.5,0) -- (1.5,0);
+      \draw (0,-1.5) -- (0,1.5);
+      \draw (0,0) circle (1cm);
+      \draw[fill=red!50] (0,0) -- +(-45:1cm)
+      arc (-45:45:1cm) -- cycle;
+      \draw [dashed] (0,0) circle (.5cm);
+      \draw[fill=gray!50] (0,0) -- +(-45:.5cm)
+      arc (-45:45:.5cm) -- cycle;
+    \end{tikzpicture}
+  \end{minipage}\hspace{3cm}
+  \begin{minipage}{.2\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+      \draw (-1.5,0) -- (1.5,0);
+      \draw (0,-1.5) -- (0,1.5);
+      \draw (0,0) circle (1cm);
+      \draw[fill=red!50] (0,0) -- +(-90:1cm)
+      arc (-90:90:1cm) -- cycle;
+      \draw [dashed] (0,0) circle (.5cm);
+      \draw[fill=gray!50] (0,0) -- +(-90:.5cm)
+      arc (-90:90:.5cm) -- cycle;
+    \end{tikzpicture}
+  \end{minipage}
+\end{figure}

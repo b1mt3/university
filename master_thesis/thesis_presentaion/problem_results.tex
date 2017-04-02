@@ -1,0 +1,90 @@
+\section {Problem}
+
+\begin {frame}
+  \frametitle {System model}
+  \begin{itemize}
+    \item 2 stationery independent homogeneous PPPs of base stations and mobile users \((\Phi_b, \Phi_u)\);
+    \item Given parameters \((\lambda_b,P_b,N_b,\beta_b,\Theta_b),(\lambda_u,P_u,N_u,\beta_u,\Theta_u)\);
+    \item Rayleigh fading with mean 1;
+    \item Noise-limited environment;
+    \item Receiver at the origin of \(\R^2\), nearest BS at \(B_{nst}\);
+    \item Distance to the nearest BS as \(d_b\), to the nearest D2D node - \(d_u\)
+  \end{itemize}
+\end {frame}
+
+\begin {frame}
+  \frametitle {Performance evaluation}
+\par The key performance characteristics that the paper considers is Signal-to-Noise ratio (SNR).
+\[SNR_{nf}=\frac {S} {N}=\frac {Pd^{-\beta}} {N},\]
+for channel without fading; and
+\[SNR_f=\frac {Phd^{-\beta}} {N},\]
+for channel with fading where $h$ - random variable that follows an exponential distribution with mean $1/\mu$ which we denote as $h\sim \exp(\mu)$.
+\end {frame}
+
+\section {Results}
+
+\begin {frame}
+  \frametitle{Performance evaluation}
+The purpose of the thesis is to consider the following probabilities:
+\begin{equation}
+p_{nf}=\P\Big[SNR_{nf}\ge\Theta\Big]=\P\Big[d\le\big(\frac{P}{N\Theta}\big)^{1/\beta}\Big],
+\end{equation}
+and:
+\begin{equation}
+p_{f}=\P\Big[SNR_f\ge\Theta\Big]=\P\Big[h\ge\frac{Nd^{\beta}\Theta}{p}\Big].
+\end{equation}
+Considering (1) for BS and D2D node, we get:
+\[\P\Big[d_b\le R_1\Big]\text{, where }R_1=\Big(\frac {P_b} {N_b\Theta_b}\Big)^{1/\beta_b}\]
+\[\P\Big[d_u\le R_2\Big]\text{, where }R_2=\Big(\frac {P_u} {N_u\Theta_u}\Big)^{1/\beta_u}\]
+Scenarios under consideration:
+\begin{enumerate}
+  \item \(d_b\le R_1\)--direct cellular connection;
+  \item \(R_1<d_b\le R_1+R_2\)--single D2D relay connection.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle {Direct cellular connection}
+  \begin {block} {Cellular connection with non-fading channel}
+    \[p_{nf}^{cel}=1-\exp(-\lambda_b\pi R_1^2)\]
+  \end {block}
+  \begin{minipage}{.65\textwidth}
+    {\it Idea:} Using (1) and \(R_1\) we get:
+    \[\P[d_b\le R_1]=1-\P[\Phi_b(b(o,R_1))=0]\]
+  \end{minipage}
+  \begin{minipage}{.3\textwidth}
+    \input{plot_cellular}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Single D2D relay link connection}
+  \begin {block} {Single D2D relay connection with non-fading channel}
+  \[p_{nf}^{s-hop}=2\lambda_b\pi\int_{R_1}^{R_1+R_2}r\exp(-\lambda_b\pi r^2)(1-\exp(-\lambda_u|D(r)|))dr,\]
+  where $|D(r)|=R_2^2 \cos^{-1}\Big(\frac {r^2 + R_2^2 - R_1^2} {2rR_2}\Big)+R_1^2\cos^{-1}\Big(\frac {r^2 + R_1^2 - R_2^2} {2rR_1}\Big)-\frac {1} {2}\sqrt{(R_2+R_1-r)(r+R_2-R_1)(r-R_2+R_1)(r+R_1+R_2)}$.
+  \end {block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Single D2D relay link connection}
+  \begin {minipage}{0.65\textwidth}
+{\it Idea:} We consider the event \(C=\Big[\Phi_u\big(b(o,R_2)\cap b(B_{nst},R_1)\big)\ge1,d_b\in(R_1;R_1+R_2]\Big]\). 
+We then derive a PDF of (1) for case of a mobile user \(f_{d_b}(r)=\frac{d}{dr}(\P(d_b\le r))=2\lambda_b\pi re^{-\lambda_b\pi r^2}\). 
+We use the conditioning on the nearest BS to be at distance \(r,\quad d_b=r\) and compute the integral:
+\[\int_{R_1}^{R_1+R_2}f_{d_u}(r)\P\Big(\Phi_u\big(b(o,R_2)\cap b(B_{nst},R_1)\ge1\big)\Big|d_b=r\Big)\]
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+    \input{plot_single_hop}
+  \end{minipage}
+\end {frame}
+
+\begin {frame}
+  \frametitle {Cellular connection with fading effect.}
+  \begin {block} {Cellular connection with fading in the channel}
+  \[p_{f}^{cel}=2\lambda_b\pi\int_{r>0}\exp\Big(-\frac {\mu \Theta_b N_b r^{\beta_b}} {P_b}\Big)r\exp(-\lambda_b\pi r^2)dr\]
+  \end {block}
+{\it Idea:} We condition on the nearest BS to be at distance \(r\), and using (2) we consider the following probability:
+\[\P\Big[h\ge\frac{N_bd^{\beta_b}\Theta_b}{P_b}\Big|d_b=r\Big]\]
+We then use the PDF of \(d_b\) -- \(f_{d_b}(r)\) and compute the integral:
+\[\int_{r>0}f_{d_b}(r)\P\Big[h\ge\frac{N_br^{\beta_b}\Theta_b}{P_b}\Big]\]
+\end {frame}

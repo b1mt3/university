@@ -1,0 +1,56 @@
+\subsection {Case 3: Connectivity by means of a multiple device-to-device relay links}
+This scenario assumes the distance between the receiver and its nearest serving base station is $> R_1+R_2$, thus enabling multiple ($>2$) device-to-device relay links.
+\par {\bf Approach}
+\\As the nearest serving base station is unreachable for a direct link, the nearest node will always be a mobile user.
+Let's denote \(l_{i,j}\) as the distance between a node \(i\) and its nearest neighbour \(j\).
+As (9) states, the successful connection between two nearest nodes happens when the distance between them does not exceed the value of \(R_2\).
+The \(0\)-th node will always denote the receiver, that is located at the origin of the considered dimension.
+Denoting the number of hops as \(n=0,1,2,\dots\), we get:
+\[n=1\text{ , }\P[l_{0,1}\le R_2\big|d_0>R_1]\]
+\[n=2\text{ , }\P[l_{0,1}\le R_2]\times\P[l_{1,2}\le R_2\big|l_{0,1}\le R_2,d_0>R_1,d_1>R_1]\]
+\[n=3\text{ , }\P[l_{0,1}\le R_2]\times\P[l_{1,2}\le R_2\big|l_{0,1}\le R_2]\]
+\[\times\P[l_{2,3}\le R_2\big|l_{0,1}\le R_2,l_{1,2}\le R_2,d_0>R_1,d_1>R_1,d_2>R_1]\]
+In order to exclude the possibility of the base station being in between any of the nodes, we've added the condition \(d_{i}>R_1\text{, }i=0,1,2,\dots,n-1\), that denotes the distance between the \(i\)-th node and its nearest base station.
+\\The general form of the \(n\)-hop connection will take form:
+\begin{framed}
+\[\sum_{n=0}^{\infty}\Bigg[\prod_{k=1}^{n}\P\Big[l_{k-1,k}\le R_2\Big|\bigcap\limits_{h=1}^{k-1}l_{h-1,h}\le R_2, \bigcap\limits_{m=0}^{n-1}d_m>R_1\Big]\Bigg]\]
+\begin{equation}
+\times\P\Big[d_{n}\le R_1\Big|\bigcap\limits_{q=1}^{n}l_{q-1,q}\le R_2\text{, }d_{q-1}>R_1\Big]
+\end{equation}
+\end{framed}
+PDF of \(\P[d_m>R_1] (m=0,1,\dots,n-1)\) is:
+\[\frac{d}{dr}\P[d_i>r]=\frac{d}{dr}\P[\Phi_b(B_m)=0]\]
+In \(\R^1\) case, \(B_m\) is the interval of search for the nearest base station; and in \(\R^2\) case -- the disk of search. Thus,
+\begin{equation}
+\R^1\text{: }f^c_d(r)=\frac{d}{dr}\exp(-\lambda_br)=-e^{-\lambda_br}
+\end{equation}
+\begin{equation}
+\R^2\text{: }f^c_d(r)=\frac{d}{dr}\exp(-\lambda_b\pi r^2)=-2\lambda_b\pi re^{-\lambda_b\pi r^2}
+\end{equation}
+
+\subsection {Special cases of 2 and 3 relay links}
+\par In order to provide legitimate numerical results, we shall consider special cases of the number of multiple D2D relay links being 2 and 3.
+\par{\bf Two D2D relay links, \(n=2\)}
+\[\P[SNR^{2-hop}_{nf}\ge\Theta_b]=\]
+\[\P\Bigg[l_{0,1}\le R_2\Bigg|d_0>R_1\Bigg]\]
+\[\times\P\Bigg[l_{1,2}\le R_2\Bigg|l_{0,1}\le R_2\text{, }d_0>R_1\text{, }d_1>R_1\Bigg]\]
+\[\times\P\Bigg[d_2\le R_1\Bigg|l_{0,1}\le R_2\text{, }l_{1,2}\le R_2\text{, }d_0>R_1\text{, }d_1>R_1\Bigg]\]
+\[=\int_{0}^{R_1}\Big(1-\P[l_{0,1}>R_2]\Big)f^c_d(s)ds\]
+\[\times\int_{R_2/2}^{R_1+R_2}\int_{0}^{R_1}\int_{R_2/2}^{R_2}\Big(1-\P[l_{1,2}>R_2\Big)f^c_d(s_1,s_2)f_l(t)dtds_1ds_2\]
+\[\times\int_{\frac{3}{2}R_2}^{2R_2}\int_{R_2/2}^{R_2}\int_{R_2/2}^{R_1+R_2}\int_{0}^{R_1}\Big(1-\P[d_2>R_1]\Big)f_l(t_1,t_2)f^c_d(s_1,s_2)dt_1dt_2ds_1ds_2\]
+\[=-2\lambda_b\pi\int_{0}^{R_1}\Big(1-e^{-\lambda_u\pi R_2^2}\Big)se^{-\lambda_b\pi s^2}ds\]
+\[\times\]
+
+\par{\bf Three D2D relay links, \(n=3\)}
+\[\P[SNR^{3-hop}_{nf}\ge\Theta_b]\]
+\[=\P\Bigg[l_{0,1}\le R_2\Bigg|d_0>R_1\Bigg]\]
+\[\times\P\Bigg[l_{1,2}\le R_2\Bigg|l_{0,1}\le R_2\text{, }d_0>R_1\text{, }d_1>R_1\Bigg]\]
+\[\times\P\Bigg[l_{2,3}\le R_2\Bigg|l_{0,1}\le R_2\text{, }l_{1,2}\le R_2\text{, }d_0>R_1\text{, }d_1>R_1\text{, }d_2>R_1\Bigg]\]
+\[\times\P\Bigg[d_3\le R_1\Bigg|l_{0,1}\le R_2\text{, }l_{1,2}\le R_2\text{, }l_{2,3}\le R_2\text{, }d_0>R_1\text{, }d_1>R_1\text{, }d_2>R_1\Bigg]\]
+\[=\int_{0}^{R_1}\Big(1-\P[l_{0,1}>R_2]\Big)f^c_d(s)ds\]
+\[\times\int_{R_2/2}^{R_1+R_2}\int_{0}^{R_1}\int_{R_2/2}^{R_2}\Big(1-\P[l_{1,2}>R_2\Big)f^c_d(s_1,s_2)f_l(t)dtds_1ds_2\]
+\[\times\int_{\frac{3}{2}R_2}^{2R_2+R_1}\int_{R_2/2}^{R_2+R_1}\int_{0}^{R_1}\int_{\frac{3}{2}R_2}^{2R_2}\int_{R_2/2}^{R_2}\Big(1-\P[l_{2,3}>R_2]\Big)f_l(t_1,t_2)f^c_d(s_1,s_2,s_3)\]
+\[\times dt_1dt_2ds_1ds_2ds_3\]
+\[\times\int_{\frac{3}{2}R_2}^{2R_2+R_1}\int_{R_2/2}^{R_2+R_1}\int_{0}^{R_1}\int_{\frac{5}{2}R_2}^{3R_2}\int_{\frac{3}{2}R_2}^{2R_2}\int_{R_2/2}^{R_2}\Big(1-\P[d_3>R_1]\Big)f_l(t_1,t_2,t_3)f^c_d(s_1,s_2,s_3)\]
+\[\times dt_1dt_2dt_3ds_1ds_2ds_3\]
+\[=\]

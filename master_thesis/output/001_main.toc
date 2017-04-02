@@ -1,0 +1,18 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Thesis introduction}{3}
+\contentsline {section}{\numberline {2}Main definitions}{7}
+\contentsline {section}{\numberline {3}Problem Statement and Performance characteristics}{9}
+\contentsline {subsection}{\numberline {3.1}System model}{9}
+\contentsline {subsection}{\numberline {3.2}Performance evaluation}{10}
+\contentsline {section}{\numberline {4}Considered cases under "non-fading channel" assumption}{11}
+\contentsline {subsection}{\numberline {4.1}Case 1: Direct cellular link}{11}
+\contentsline {subsection}{\numberline {4.2}Case 2: Connectivity by means of a single device-to-device relay link}{12}
+\contentsline {section}{\numberline {5}Considered cases under "channel with fading" assumption}{13}
+\contentsline {subsection}{\numberline {5.1}Direct cellular link}{13}
+\contentsline {section}{\numberline {6}Numerical Experiments}{14}
+\contentsline {subsection}{\numberline {6.1}Direct cellular connection without fading}{14}
+\contentsline {subsection}{\numberline {6.2}Direct cellular connection with fading}{17}
+\contentsline {subsection}{\numberline {6.3}Direct cellular connection or single D2D relay link without fading}{17}
+\contentsline {section}{\numberline {7}Conclusion}{24}
+\contentsline {section}{\numberline {A}Proofs.}{28}
+\contentsline {section}{\numberline {B}Plots.}{29}

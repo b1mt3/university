@@ -1,0 +1,142 @@
+\section{Numerical experiments}
+\begin{frame}
+\frametitle{Testing environment}
+Simulations were conducted for cases:
+\begin{enumerate}
+    \item direct cellular connection (without fading);
+    \item direct cellular connection (with fading);
+	\item direct cellular connection or single D2D relay link (without fading);
+\end{enumerate}
+The value of the precision used during the numerical integration is $10^{-3}$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Initial testing parameters}
+The following data was used as a baseline sample for experiments:
+
+\begin{center}
+    \begin{tabular}{ | l | p{3cm} | }
+	  \hline
+	  Symbol & Simulation value \\
+	  \hline
+	  ${P_u}$ & 23 dBm\\
+	  ${P_b}$ & 46 dBm+14 dBi\\
+	  ${\lambda_u}$ & ${5\times 10^{-5}}$\\
+	  ${\lambda_b}$ & $10^{-6}$\\
+	  ${N_u}$ & -105 dBm\\
+	  ${N_b}$ & -99 dBm\\
+	  ${\Theta_u}$ & 10 dB\\
+	  ${\Theta _b}$ & 5 dB\\
+	  ${\beta_u}$ & 3.68\\
+	  ${\beta_b}$ & 3.52\\
+	  \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Testing scenarios.}
+Parameters left to be constant:
+\begin{itemize}
+  \item transmission power;
+  \item thermal noise;
+  \item service threshold.
+\end{itemize}
+Parameters being tested:
+\begin{itemize}
+  \item density;
+  \item propagation exponents.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Direct cellular connection or single D2D relay link without fading}
+  \begin{minipage}{.5\textwidth}
+	\begin{figure}[!hb]
+		\begin{tikzpicture}[scale=.6]
+		  \begin{axis}[xmin=0.00000001,xmax=0.00003,ymin=0.000001,ymax=0.1,zmin=0,zmax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={\(\lambda_u\), UE density},zlabel={probability}]
+		    \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob0.txt};
+		    \label {pgfplots:d2d_nf_c_ds_prob0}
+		    \addlegendentry {\(\beta_b=3.52\)}
+		    \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob0.txt};
+		    \label {pgfplots:d2d_nf_ds_prob0}
+		    \addlegendentry {\(\beta_b=3.52\)/\(\beta_u=3.68\)}
+		    \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob1.txt};
+		    \label {pgfplots:d2d_nf_c_ds_prob1}
+		    \addlegendentry {\(\beta_b=2.7\)}
+		    \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob2.txt};
+		    \label {pgfplots:d2d_nf_ds_prob2}
+		    \addlegendentry {\(\beta_b=2.7\)/\(\beta_u=2.86\)}
+		  \end{axis}
+		\end{tikzpicture}
+	  \caption {}
+	\end{figure}
+  \end{minipage}
+  \qquad
+  \begin{minipage}{.4\textwidth}
+	{\bf \(\beta_b=3.52\)/\(\beta_u=3.68\):}
+    \resizebox{\textwidth}{!}{
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.008 \\ \hline
+	0.00000005 & 0.000010 & 0.039 \\ \hline
+	0.00000025 & 0.000100 & 0.178 \\ \hline
+	0.00000125 & 0.001000 & 0.626 \\ \hline
+	0.00000625 & 0.010000 & 0.993 \\ \hline
+	0.00003125 & 0.100000 & 1.000 \\ \hline
+	\end{tabular}}
+	{\bf \(\beta_b=2.7\)/\(\beta_u=2.86\):}
+    \resizebox{\textwidth}{!}{
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000001 & 0.000001 & 0.290 \\ \hline
+	0.00000005 & 0.000010 & 0.819 \\ \hline
+	0.00000025 & 0.000100 & 1.000 \\ \hline
+	\end{tabular}}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Direct cellular connection or single D2D relay link without fading}
+  \begin{minipage}{.5\textwidth}
+	\begin{figure}[!hb]
+		\begin{tikzpicture}[scale=.6]
+		  \begin{axis}[mesh/ordering=y varies,xmin=0.00000001,xmax=0.0008,ymin=0.01,ymax=100,zmin=0,zmax=1,legend style={at={(0.5,-0.20)},anchor=north},grid=major,xlabel={\(\lambda_b\), BS density},ylabel={\(\lambda_u\), UE density},zlabel={probability}]
+		    \addplot3 table[header=false,y expr=0] {tables_new/d2d_nf_c_ds_prob2.txt};
+		    \label {pgfplots:d2d_nf_c_ds_prob2}
+		    \addlegendentry {\(\beta_b=6\)/\(\beta_u=6\)}
+		    \addplot3[surf] table[header=false] {tables_new/d2d_nf_ds_prob3.txt};
+		    \label {pgfplots:d2d_nf_ds_prob3}
+		    \addlegendentry {\(\beta_b=6\)/\(\beta_u=6\)}
+		  \end{axis}
+		\end{tikzpicture}
+	  \caption {}
+	\end{figure}
+  \end{minipage}
+  \qquad
+  \begin{minipage}{.4\textwidth}
+	{\bf \(\beta_b=6\)/\(\beta_u=6\):}
+    \resizebox{\textwidth}{!}{
+	\begin{tabular}{|c|c|c|}
+	\(\lambda_b\) & \(\lambda_u\) & \(\P\) \\ \hline
+	0.00000025 & 0.000100 & 0.001 \\ \hline
+	0.00000125 & 0.001000 & 0.006 \\ \hline
+	0.00000625 & 0.010000 & 0.029 \\ \hline
+	0.00003125 & 0.100000 & 0.139 \\ \hline
+	0.00015625 & 1.000000 & 0.595 \\ \hline
+	0.00078125 & 10.000000 & 0.997 \\ \hline
+	0.00390625 & 100.000000 & 1.000 \\ \hline
+	\end{tabular}}
+	{\bf \(\beta_b=6\):}
+    \resizebox{3cm}{!}{
+	\begin{tabular}{|c|c|}
+	\(\lambda_b\) & \(\P\) \\ \hline
+	0.00000025 & 0.001 \\ \hline
+	0.00000125 & 0.006 \\ \hline
+	0.00000625 & 0.028 \\ \hline
+	0.00003125 & 0.134 \\ \hline
+	0.00015625 & 0.514 \\ \hline
+	0.00078125 & 0.973 \\ \hline
+	\end{tabular}}
+  \end{minipage}
+\end{frame}

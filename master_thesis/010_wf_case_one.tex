@@ -1,0 +1,18 @@
+\section{Considered cases under "channel with fading" assumption}
+Let's investigate (6) a bit deeper:
+\[p_f^{cel}=\P[SNR_f^{cel}\ge\Theta_b]=\P\Bigg[\frac {P_b h d_b^{-\beta_b}}{N_b}\ge\Theta_b\Bigg]\]
+\[=\P\Bigg[h\ge\frac {N_b\Theta_b d_b^{-\beta_b}}{P_b}\Bigg]=1-\P\Bigg[h<\frac {N_b\Theta_b d_b^{-\beta_b}}{P_b}\Bigg]\]
+\[=\exp(-\frac {\mu N_b\Theta_b d_b^{-\beta_b}}{P_b})\]
+this is in terms of a link between the receiver and its nearest serving base station, and:
+\[p_f^{d2d}=\P[SNR_f^{d2d}\ge\Theta_u]=\P\Bigg[\frac {P_u h d_u^{-\beta_u}}{N_u}\ge\Theta_u\Bigg]\]
+\[=\P\Bigg[h\ge\frac {N_u\Theta_u d_u^{-\beta_u}}{P_u}\Bigg]=1-\P\Bigg[h<\frac {N_u\Theta_u d_u^{-\beta_u}}{P_u}\Bigg]\]
+\[=\exp(-\frac {\mu N_u\Theta_u d_u^{-\beta_u}}{P_u})\]
+in terms of a link between 2 mobile users.
+\\The consideration is based upon the performance between the nodes(receiver, base stations and other mobile users).
+  \subsection{Direct cellular link}
+  \begin {framed}
+	{\bf Theorem 4.}
+    The probability of the cellular link with fading effect in the channel would be expressed as:
+	$$p_c = 2\lambda_b\pi\int_{r>0}e^{-\frac{\mu\Theta_b N_b r^{\beta_b}}{P_b}}re^{\lambda_b\pi r^2}dr$$
+	\\{\it Proof:}  See Appendix A.
+  \end {framed}

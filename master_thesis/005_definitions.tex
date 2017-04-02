@@ -1,0 +1,197 @@
+\newpage
+  \section {Thesis introduction}
+    \par A constant need to increase the network capacity for meeting the growing demands of the subscribers has led to the evolution of cellular communication networks from the first generation (1G) to the fifth generation (5G). 
+An emerging facilitator of the upcoming high rate demanding next generation networks (NGNs) is a device-to-device (D2D) communication. 
+Device-to-device (D2D) communication enables direct communication between nearby mobiles that improves spectrum utilization, overall throughput and energy efficiency.
+    \par The D2D communication usually is categorized based on the spectrum in which the communication occurs. In this sense, 2 major categories are derived: 
+the communication that occurs in the cellular spectrum (inband D2D) and the one that exploits unlicensed spectrum (outband D2D).
+According to \cite {survey}, the inband D2D can be further decomposed into underlay and overlay categories: 
+in the underlay D2D communications cellular and D2D communications share the same radio resources; 
+while in the overlay ones a portion of cellular radio resources is given specifically for D2D links. 
+The features of the inband D2D communications are its advantages -- both underlay and overlay kinds of this type of D2D communications improve the spectrum efficiency. 
+But along with it, as D2D links are formed in the same spectrum as the cellular links, the key disadvantage is the interference caused by D2D and cellular users to each other.
+    \par On the other hand, using unlicensed D2D spectrum (outband D2D communication) eliminates the interference issue.
+But introduces another type of challenge - using unlicensed spectrum requires a special interface: 
+outband D2D may suffer from the uncontrolled nature of unlicensed spectrum. 
+Now a brief overview of the literature on D2D communications will be given, according to the \cite {survey}: 
+each studied will be reviewed it terms of the problem addressed, the introduced solution and the a portion of statistical results. 
+In \cite {avoidance} interference in the uplink spectrum is studied. 
+The proposed interference mitigation methods are: 
+1) D2D users read the resource block allocation information from the control channel, thus resource blocks being used by cellular users are not disturbed; 
+2) Broadcast the expected interference from D2D communication on cellular resource block to all D2D users, thus in order to keep the interference from D2D users to uplink transmission below a certain threshold D2D users can adjust their transmission power and resource block selection; 
+3) numerical simulations showed the improvement of the system throughput by 41\%.
+    \par In \cite {ratesplitting} Han-Kobayashi rate splitting techniques are proposed to use to improve the throughput of D2D communications. 
+As a message is divided into private (decoded only by the addressee) and public (decoded by any receiver of the message) parts, this technique along with the 'best-effort successive interference cancellation' algorithm cancel the interference from the public part. 
+Numerical simulations with D2D pair positioned close to each other and far from the base station, showed a 650\% increase of the cell throughput. 
+A capacity of cellular networks is addressed in \cite {doppler}. 
+A joint D2D communication and network coding scheme are proposed. 
+The model considers cooperative networks, where D2D communication is used to exchange uplink messages among cellular users before the messages are transmitted to the base station. 
+The idea is to group the users with complementary characteristics to enhance the performance of network coding. 
+Numerical simulations show a 34\% increase in the network capacity. It's worth noting that multi-antenna capability contributes to interference reduction from a base station and to 30\% increase of D2D users. 
+In terms of {\bf power efficiency}, the work \cite {choi} introduces an algorithm for power allocation and mode selection in D2D communication. 
+This algorithm considers power efficiency of users in cellular and D2D modes (as a function of transmission rate and power consumption). 
+Based on the measurements of each user, it switches to the mode with the highest power efficiency. 
+The drawback of such algorithm is exhaustive search for all possible combinations of modes for all devices. 
+As opposed to \cite {kosketa} scheme, the simulation indicate an up to 100\% gain.
+In \cite {cognitive} the user spectrum utility (combination of users' data rates, power expenditure and bandwidth) is considered. 
+Optimal transmission power for cellular and D2D modes are obtained, then with the evolutionary game mode selection is simulated (base station collects the users' decisions on mode selection and broadcasts the information to all users to aid the future mode selections). 
+Numerical results show a 33\% increase in cellular mode and an up to 500\% - in D2D mode. 
+The authors of \cite {milcom} propose a way of enlarging cellular coverage. 
+A node within the base station service range depending on the conditions and traffic can be associated with a relay node. 
+Close to each other nodes are grouped. Base stations serve the groups according to 'Round-Robin' scheduling policy mitigating the interference. 
+Monte-Carlo simulations show an improvement from 150\% to 300\% in terms of throughput for cell edge users.
+The study on using D2D communication as a disaster relief solution is done in \cite{disaster}.
+ The authors consider an interference included environment, and aim to derive a tractable way to calculate performance a D2D enabled network with some damaged cellular areas. 
+Chain relaying is adopted in order to extend the cellular coverage. 
+Monte-Carlo simulation indicate the damage equivalent to 50-70\% of the capacity of the network can be absorbed by D2D nodes and still maintain its nominal service.
+\par Content distribution is considered as a way of D2D communication usage: 
+in \cite {dataspotting} a location-aware scheme is proposed - it keeps track of the location of every user and his requests. 
+This way, a base station doesn't require the content re-transmission that has already been transmitted to a nearby user. 
+Thus a reduction in transmission delay and a increase of the network capacity can be achieved. 
+Though high control overhead and battery drain issues might need an additional consideration. 
+As of the {\bf overlaying inband D2D}, a work of \cite {mumimo} suggest an incremental relay mode for D2D communication. 
+D2D transmitters multicast to both D2D receiver and a base station, and in case of D2D reception failute, the base station retransmits a copy to the D2D receiver. 
+The scheme reduces the outage probability of D2D transmissions. 
+Numerical simulations indicate a 40\% improvement of the cell throughput compared to underlay mode. 
+Another example of multicast usage in overlay D2D communication is \cite {intra}. 
+The study aims to improve the performance of multicast transmissions. In case of incorrect data reception, a multicast group is proposed to use D2D communication to enhance multicast performance (those members of the group who couldn't decode the message will get the decoded message from other members of the group who managed to decode it). 
+Novelty of this study  is in order to maximize the spectral efficiency, a dynamic change of the number of transmitters is allowed. 
+Numerical simulations show a 90\% decrease of spectrum resource consumption compared to the one retransmitter scenatio.
+\par Now, the {\bf outband D2D}. 
+In \cite {asadi} and \cite {mancuso} D2D communications is considered to improve throughput and energy efficiency of cellular networks. The idea is to form clusters of cellular users within a WiFi communication range. Each cluster then has a cluster head (based upon the highest cellular channel quality), responsible for distributing the content from the base station, as well as forwarding the date from other cluster members to the base station. 
+Thus, spectral and energy efficiency are increased. 
+Numerical simulations show a 50\% improvement of throughput and 30\% - of energy efficiency, compared to 'Round-Robin' schedulers. An almost perfect fairness is also achieved. 
+Another study, \cite {caching}, addresses the video transmission scenario in cellular networks using D2D communications. The idea is to use the property of asynchronous content reuse (by combining D2D communication and video caching on the devices). Under assumption of fixed data rate and no power control over D2D link, the purpose is to maximize per-user throughput constrained to the outage probability. 
+Numerical simulations indicate the proposed method achieve at least 10000\% gain compared to conventional broadcasting methods and a 1000\% gain over the coded broadcasting methods.
+\vspace{1cm}
+\par {\it Contribution}
+\\This study considers a D2D communication enabled cellular network with no inband or outband specification. 
+The environment assumes noise-limited situation with signal fading effect. 
+Thus, 2 sets of points are considered - base stations and mobile users, with initial parameters of density, transmission power, signal propagation exponent and the service threshold. 
+The purpose of the model is to estimate the performance of such network and compare it with conventional cellular-only model by means of numerical experiments. 
+The study incorporates stochastic geometry to derive analytical results for scenarios without fading effect and involving it.
+\vspace{1cm} 
+\par {\it Paper structure.}
+\\The work starts off with the list of the main definitions of tools used later in the text; 
+next section inroduces the problem formalization and performance evaluation characteristics. 
+Afterwards, scenarios without fading effect are described: 
+1) cellular link; 
+2) single D2D relay link; 
+3) miltiple D2D relay link. 
+The description involves the derivation of the analytical result for performance estimation. 
+Next section describes scenarios involving fading effect: 
+1) cellular link;
+2) multiple D2D relay link;
+The analytical formulas are derived as well. 
+The numerical experiments are described in section 6: the parameters list used for experimenting and graphical representation of the results. 
+Section 7 concludes the study. 
+Appendix includes the plots for scenarios representation, necessary proofs of the derivation process. 
+
+\newpage
+\section{Main definitions}
+\begin{center}
+    \begin{tabular}{ | l | p{7cm} |}
+        \hline
+        Symbol & {\hspace {3cm}Meaning} \\ \hline
+		D2D & Device-to-device \\ \hline
+        ${\Phi_u}$ & Poisson point process of mobile users \\ \hline
+        ${\lambda_u}$ & Mobile users denisty \\ \hline
+        ${\Phi_b}$ & Poisson point process of base stations \\ \hline
+        ${\lambda_b}$ & base stations density \\ \hline
+        $r$ & Distance between the receiver and its serving base station \\ \hline
+        $R_1$ & Radius of the search disk of a base station \\ \hline
+        $R_2$ & Radius of the search disk of a mobile user \\ \hline
+		${\beta_u}$ & Propagation exponent mobile user-mobile user \\ \hline
+		${\beta_b}$ & Propagation exponent base station-mobile user \\ \hline
+		$P_u$ & Transmission power of a mobile user \\ \hline
+		$P_b$ & Transmission power of a base station \\ \hline
+		${\Theta_u}$ & Service threshold at a mobile user (Downlink) \\ \hline
+		${\Theta_b}$ & Service threshold at a base station (Uplink) \\ \hline
+		$N_u$ & Mobile user thermal noise \\ \hline
+		$N_b$ & Base station thermal noise\\ \hline
+    \end{tabular}
+\end{center}
+\begin{framed}
+\par{\bf Poisson point process.} \\
+The Poisson point process on $\R^d$ with intensity measure $\Lambda$ is a point process s.t.
+  \begin{enumerate}
+    \item for every compact set $B\subset\R^d$, N(B) has a Poisson distribution with mean $\Lambda$. If $\Lambda$ admits a density $\lambda$, we may write:
+	$$\P(N(B)=k)=\frac{{\Big(\int_B\lambda (x)dx\Big)}^k}{k!} e^{-\int_B\lambda (x)dx};$$
+	\item if $B_1,B_2,...,B_m$ are disjoint compact sets, then $N(B_1), N(B_2),..., N(B_m)$ are independent.	
+  \end{enumerate}
+The homogeneous PPP is a special case where $\Lambda (B)=\lambda|B|$  
+\end{framed}
+\begin{framed}
+\par{\bf Signal-to-Noise Ratio}
+$$SNR=\frac{S}{N},$$ where $S$ -- serving signal, carrying the necessary information; and $N$ -- thermal noise of the operating unit.
+\end{framed}
+\begin{framed}
+	\par {\bf Discrete Case.}
+	\\Suppose that $X$ is a random variable for the experiment, taking values in a set $S$. Suppose that $X$ has a discrete distribution with probability mass function $g(x)=\P(X=x)$.
+	\\If $E$ is an event in the experiment and $A$ is a subset of $S$ then
+	\begin{equation}
+		\P(E,X\in A)=\sum_{x\in A}g(x)\P(E|X=x)
+	\end{equation}
+\end{framed}
+
+\begin{framed}
+	\par {\bf Continuous Case.}
+	\\Based on the characterization of the discrete case, define the conditional probability in a continuous case.
+	\\Suppose that $X$ has a continuous distribution on $S\subseteq \R^n$, with probability density function $g$. Assume that $g(x)>0$ for $x\in S$.
+	\\For any measurable subset $A$ of $S$:
+	\begin{equation}
+		\P(E,X\in A)=\int_A g(x)\P(E|X=x)dx,x\in S
+	\end{equation}
+\end{framed}
+
+\begin{framed}
+	\par {\bf Conditional expected value}
+	\\For any event $A\in\mathcal{A}\subseteq\mathcal{B}$, define the indicator function:
+	\begin{displaymath}
+		\mathbbm{1}_A{\omega}=\left\{
+			\begin{array}{lr}
+			1 & : \omega\in A\\
+			0 & : \omega\notin A
+			\end{array}
+		\right.
+	\end{displaymath}
+	which is a random variable. Then the conditional probability given $\mathcal{B}$ is a function $\P(\cdot|\mathcal{B}):\mathcal{A}\times\Omega\rightarrow(0,1)$, such that $\P(A|\mathcal{B})$ is the conditional expectation of the indicator function of $A$:
+	$$\P(A|\mathcal{B})=\E(\mathbbm{1}_A|\mathcal{B})$$
+	In other words, $\P(A|\mathcal{B})$ is a $\mathcal{B}$-measurable function satisfying
+	\begin{equation}
+		\int_{B}\P(A|\mathcal{B})(\omega)dP(\omega)=\P(A\cap B), \forall A\in\mathcal{A},B\in\mathcal{B}
+	\end{equation}
+	or,
+	\begin{equation}
+		\int_{B}\E(\mathbbm{1}_A|\mathcal{B})(\omega)dP(\omega)=\P(A\cap B)
+	\end{equation}
+\end{framed}
+
+\begin{framed}
+	{\bf Distance to the nearest base station}
+		\\Since each user communicates with the closest base station, the probability density function of $d$ can be derived using a simple fact that the null probability of a PPP in an area A is $e^{-\lambda |A|}$:
+		$$\P[d>R] = e^{-\lambda\pi R^2}$$
+		Therefore,
+		$$\P[d\le R] = 1-e^{-\lambda\pi R^2},$$
+		and
+		$$f_d(r) = 2\lambda\pi re^{-\lambda\pi r^2}$$
+\end{framed}
+\begin{comment}
+	\begin{framed}
+		\par {\bf Change of variables theorem}
+		\\Suppose that $X$ is a general random variable, taking values in a measurable space $(S,\mathcal{I})$, where $\mathcal{I}$ is a $\sigma$-algebra on set $S$. Let $P$ be a probability measure on $(S, \mathcal{I})$. If $g:S\rightarrow\R$ is measurable, then:
+		\begin{equation}
+			\E(g(X))=\int_Sg(x)dP(x)
+		\end{equation}		
+	\end{framed}
+	
+	\begin{framed}
+		\par {\bf Radon-Nikodym Theorem}
+		\\Suppose that $\mu$ is a positive measure on $(S,\mathcal{I})$, and that the distribution of X is absolutely continuous with respect to $\mu$. Then, $X$ has a probability density function $f$ with respect to $\mu$, such that:
+		$$\P(A)=\P(X\in A)=\int_Afd\mu, A\in\mathcal{I}$$
+		In this case, the expected value of $g(X)$ is an integral with respect to probability density function:
+		\begin{equation}
+			\E(g(X))=\int_Sg(x)dP(x)=\int_Sg(x)f(x)d\mu(x)
+		\end{equation}
+	\end{framed}
+\end{comment}
